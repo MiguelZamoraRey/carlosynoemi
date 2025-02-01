@@ -21,7 +21,7 @@ const Handwriting: React.FC<HandwritingProps> = ({
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
-    const fontUrl = '/src/assets/fonts/Estonia-Regular.ttf';
+    const fontUrl = './fonts/Estonia-Regular.ttf'; //'/src/assets/fonts/Estonia-Regular.ttf';
 
     opentype.load(fontUrl, (err, font) => {
       if (err) {
