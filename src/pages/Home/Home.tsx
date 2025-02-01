@@ -32,7 +32,7 @@ function Home() {
           duration={4}
         />
         <div
-          className={`flex flex-col text-4xl gap-2 max-w-[80%] transition-opacity duration-[5000ms] ${
+          className={`flex flex-col text-4xl gap-2 max-w-[80%] lg:max-w-[100%] transition-opacity duration-[5000ms] ${
             isQuestionHide ? 'opacity-0' : 'opacity-100'
           }`}
         >
