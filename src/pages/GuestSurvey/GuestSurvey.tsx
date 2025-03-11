@@ -25,7 +25,7 @@ function GuestSurvey() {
     setTimeout(() => {
       setIsQuestionHide(false);
     }, 500);
-  }, [isQuestionHide]);
+  }, []);
 
   const getGuest = async (id) => {
     const response = await getGuestById(id);
@@ -268,7 +268,7 @@ function GuestSurvey() {
   }, []);
 
   return (
-    <div className="min-h-[100vh] sm:min-w-[900px] max-w-[900px] bg-[#397374] flex flex-col items-center justify-center align-middle">
+    <div className="min-h-[100vh] min-w-[100vw] sm:min-w-[900px] max-w-[900px] bg-[#397374] flex flex-col items-center justify-center align-middle">
       <motion.div
         className={`w-[80%] flex flex-col gap-3`}
         initial={isQuestionHide ? { opacity: 1 } : { opacity: 0 }}
