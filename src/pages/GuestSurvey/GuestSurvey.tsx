@@ -25,7 +25,7 @@ function GuestSurvey() {
     setTimeout(() => {
       setIsQuestionHide(false);
     }, 500);
-  }, [isQuestionHide]);
+  }, []);
 
   const getGuest = async (id) => {
     const response = await getGuestById(id);

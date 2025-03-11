@@ -8,8 +8,19 @@ import 'swiper/css/pagination';
 
 import HourCard from '../../components/HourCard';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Landing() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const guestId = localStorage.getItem('guestId');
+    if (!guestId) {
+      navigate('/');
+    }
+  }, []);
+
   return (
     <div className="min-h-[100vh] flex flex-col gap-3 items-center justify-center align-middle p-2 max-w-[900px] bg-[#397374]">
       <motion.h1
