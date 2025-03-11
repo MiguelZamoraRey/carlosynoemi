@@ -25,7 +25,7 @@ function GuestSurvey() {
     setTimeout(() => {
       setIsQuestionHide(false);
     }, 500);
-  }, []);
+  }, [isQuestionHide]);
 
   const getGuest = async (id) => {
     const response = await getGuestById(id);
@@ -196,10 +196,7 @@ function GuestSurvey() {
             />
           );
         } else {
-          updateGuest(
-            { hasCompanion: false, status: GUEST_STATUS.COMPLETE },
-            11
-          );
+          navigate('/landing');
         }
         break;
       case 8:

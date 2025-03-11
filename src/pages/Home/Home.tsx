@@ -15,6 +15,10 @@ function Home() {
     setTimeout(() => {
       setIsQuestionHide(false);
     }, 500);
+    const guestId = localStorage.getItem('guestId');
+    if (guestId) {
+      navigate('/landing');
+    }
   }, []);
 
   const handleCheckCode = () => {
