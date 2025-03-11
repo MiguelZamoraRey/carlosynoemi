@@ -196,7 +196,10 @@ function GuestSurvey() {
             />
           );
         } else {
-          navigate('/landing');
+          updateGuest(
+            { hasCompanion: false, status: GUEST_STATUS.COMPLETE },
+            11
+          );
         }
         break;
       case 8:
