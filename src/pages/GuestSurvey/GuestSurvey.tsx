@@ -12,11 +12,12 @@ import {
 import { useNavigate, useParams } from 'react-router-dom';
 import { getActualQuestion } from '../../utils/generalMethods';
 import SurveyQuestion from '../../components/SurveyQuestion';
+import { motion } from 'framer-motion';
 
 function GuestSurvey() {
   const { code } = useParams();
   const [hasError, setHasError] = useState(false);
-  const [isQuestionHide, setIsQuestionHide] = useState(true);
+  const [isQuestionHide, setIsQuestionHide] = useState(false);
   const navigate = useNavigate();
   const [actualQuestion, setActualQuestion] = useState(0);
 
@@ -42,9 +43,12 @@ function GuestSurvey() {
 
   const updateGuest = async (data, nextQuestion: number) => {
     const lsGuestId = localStorage.getItem('guestId');
+    setIsQuestionHide(true);
     await updateGuestData(lsGuestId, data);
-    setActualQuestion(nextQuestion);
-    setIsQuestionHide(false);
+    setTimeout(() => {
+      setActualQuestion(nextQuestion);
+      setIsQuestionHide(false);
+    }, 1000);
   };
 
   const createANewGuest = async (email) => {
@@ -84,7 +88,6 @@ function GuestSurvey() {
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
-              setIsQuestionHide(true);
               updateGuest({ completeName: response }, 2);
             }}
           />
@@ -100,10 +103,8 @@ function GuestSurvey() {
             onCompleteFunction={(response) => {
               console.log(response);
               if (response == 'Sí') {
-                setIsQuestionHide(true);
                 updateGuest({ confirmAssistance: true }, 3);
               } else {
-                setIsQuestionHide(true);
                 updateGuest(
                   { confirmAssistance: false, status: GUEST_STATUS.COMPLETE },
                   11
@@ -123,10 +124,8 @@ function GuestSurvey() {
             onCompleteFunction={(response) => {
               console.log(response);
               if (response == 'Sí') {
-                setIsQuestionHide(true);
                 updateGuest({ hasIntolerances: true }, 4);
               } else {
-                setIsQuestionHide(true);
                 updateGuest({ hasIntolerances: false }, 5);
               }
             }}
@@ -141,7 +140,6 @@ function GuestSurvey() {
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
-              setIsQuestionHide(true);
               updateGuest({ intolerances: response }, 5);
             }}
           />
@@ -155,7 +153,6 @@ function GuestSurvey() {
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
-              setIsQuestionHide(true);
               updateGuest({ favoriteSong: response }, 6);
             }}
           />
@@ -169,7 +166,6 @@ function GuestSurvey() {
             type={QUESTION_TYPE.OPTION}
             options={['Sí', 'No']}
             onCompleteFunction={(response) => {
-              setIsQuestionHide(true);
               if (response == 'Sí') {
                 updateGuest({ interestedInTransport: true }, 7);
               } else {
@@ -188,7 +184,6 @@ function GuestSurvey() {
               type={QUESTION_TYPE.OPTION}
               options={['Sí', 'No']}
               onCompleteFunction={(response) => {
-                setIsQuestionHide(true);
                 if (response == 'Sí') {
                   updateGuest({ hasCompanion: true }, 8);
                 } else {
@@ -212,7 +207,6 @@ function GuestSurvey() {
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
-              setIsQuestionHide(true);
               updateGuest({ companionCompleteName: response }, 9);
             }}
           />
@@ -226,7 +220,6 @@ function GuestSurvey() {
             type={QUESTION_TYPE.OPTION}
             options={['Sí', 'No']}
             onCompleteFunction={(response) => {
-              setIsQuestionHide(true);
               if (response == 'Sí') {
                 updateGuest({ companionHasIntolerances: true }, 10);
               } else {
@@ -250,7 +243,6 @@ function GuestSurvey() {
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
-              setIsQuestionHide(true);
               updateGuest(
                 {
                   companionIntolerances: response,
@@ -272,20 +264,19 @@ function GuestSurvey() {
     const lsGuestId = localStorage.getItem('guestId');
     if (lsGuestId) {
       getGuest(lsGuestId);
-    } else {
-      setIsQuestionHide(false);
     }
   }, []);
 
   return (
     <div className="min-h-[100vh] sm:min-w-[900px] max-w-[900px] bg-[#397374] flex flex-col items-center justify-center align-middle">
-      <div
-        className={`w-[80%] flex flex-col gap-3 transition-opacity duration-[1000ms] ${
-          isQuestionHide ? 'opacity-0' : 'opacity-100'
-        }`}
+      <motion.div
+        className={`w-[80%] flex flex-col gap-3`}
+        initial={isQuestionHide ? { opacity: 1 } : { opacity: 0 }}
+        animate={isQuestionHide ? { opacity: 0 } : { opacity: 1 }}
+        transition={{ duration: 0.8 }}
       >
         {getActualQuestionComponent()}
-      </div>
+      </motion.div>
     </div>
   );
 }

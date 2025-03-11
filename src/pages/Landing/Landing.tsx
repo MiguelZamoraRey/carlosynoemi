@@ -7,17 +7,30 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
 import HourCard from '../../components/HourCard';
+import { motion } from 'framer-motion';
 
 function Landing() {
   return (
     <div className="min-h-[100vh] flex flex-col gap-3 items-center justify-center align-middle p-2 max-w-[900px] bg-[#397374]">
-      <h1 className="text-4xl underline">Disclaimer</h1>
-      <p className=" text-xl">
+      <motion.h1
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className="text-4xl underline"
+      >
+        Disclaimer
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className=" text-xl"
+      >
         Vamos a celebrar la boda en un sitio muy bonito y muy especial para
         nosotros. Como estamos a finales de septiembre es probable que a esas
         horas caiga bastante la temperatura. ¡Qué no cunda el pánico! Vamos a
         estar super agusto, pero como diría tu madre:
-      </p>
+      </motion.p>
       <span className=" text-2xl">
         "¡Llévate una rebequita que por la noche refresca!"
       </span>
