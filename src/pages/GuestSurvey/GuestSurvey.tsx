@@ -9,15 +9,22 @@ import {
   QUESTION_TYPE,
   RESPONSE_TYPES,
 } from '../../utils/generalTypes';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getActualQuestion } from '../../utils/generalMethods';
-import Spinner from '../../components/Spinner';
 import SurveyQuestion from '../../components/SurveyQuestion';
 
 function GuestSurvey() {
-  const [isLoading, setIsLoading] = useState(true);
+  const { code } = useParams();
+  const [hasError, setHasError] = useState(false);
+  const [isQuestionHide, setIsQuestionHide] = useState(true);
   const navigate = useNavigate();
   const [actualQuestion, setActualQuestion] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsQuestionHide(false);
+    }, 500);
+  }, [isQuestionHide]);
 
   const getGuest = async (id) => {
     const response = await getGuestById(id);
@@ -25,20 +32,19 @@ function GuestSurvey() {
       if (response.data.status == GUEST_STATUS.COMPLETE) {
         navigate('/landing');
       }
-
       const actualQuestion = getActualQuestion(response.data);
       setActualQuestion(actualQuestion);
     } else {
       localStorage.clear();
     }
-    setIsLoading(false);
+    setIsQuestionHide(false);
   };
 
   const updateGuest = async (data, nextQuestion: number) => {
     const lsGuestId = localStorage.getItem('guestId');
     await updateGuestData(lsGuestId, data);
     setActualQuestion(nextQuestion);
-    setIsLoading(false);
+    setIsQuestionHide(false);
   };
 
   const createANewGuest = async (email) => {
@@ -46,8 +52,10 @@ function GuestSurvey() {
     if (result.response == RESPONSE_TYPES.OK) {
       localStorage.setItem('guestId', result.data._id);
       setActualQuestion(1);
+    } else {
+      setHasError(true);
     }
-    setIsLoading(false);
+    setIsQuestionHide(false);
   };
 
   const getActualQuestionComponent = () => {
@@ -55,12 +63,14 @@ function GuestSurvey() {
       case 0:
         return (
           <SurveyQuestion
-            questionText="¡Hola 🖐🏽!, para poder quien eres necesito que me digas tu email, te notificaremos allí toda la información"
+            key={1}
+            questionText="¡Hola 🖐🏽!, para poder saber quien eres necesito que me digas tu email, te notificaremos allí toda la información"
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
-            errorMessage="Parece que no es un email válido... Por favor indicame uno válido ya que te confirmaremos los datos por allí."
+            hasError={hasError}
+            errorMessage="🥲 Parece que no es un email válido... Por favor indícame uno válido ya que te confirmaremos los datos por allí."
             onCompleteFunction={(response) => {
-              setIsLoading(true);
+              setIsQuestionHide(true);
               createANewGuest(response);
             }}
           />
@@ -69,11 +79,12 @@ function GuestSurvey() {
       case 1:
         return (
           <SurveyQuestion
+            key={2}
             questionText="¡Genial!, ¿Me puedes decir tu nombre completo?"
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
-              setIsLoading(true);
+              setIsQuestionHide(true);
               updateGuest({ completeName: response }, 2);
             }}
           />
@@ -82,16 +93,17 @@ function GuestSurvey() {
       case 2:
         return (
           <SurveyQuestion
+            key={3}
             questionText="¿Podrás acudir a nuestra boda?"
             type={QUESTION_TYPE.OPTION}
             options={['Sí', 'No']}
             onCompleteFunction={(response) => {
               console.log(response);
               if (response == 'Sí') {
-                setIsLoading(true);
+                setIsQuestionHide(true);
                 updateGuest({ confirmAssistance: true }, 3);
               } else {
-                setIsLoading(true);
+                setIsQuestionHide(true);
                 updateGuest(
                   { confirmAssistance: false, status: GUEST_STATUS.COMPLETE },
                   11
@@ -104,16 +116,17 @@ function GuestSurvey() {
       case 3:
         return (
           <SurveyQuestion
+            key={4}
             questionText="¿Tienes alguna intolerancia o alergia?"
             type={QUESTION_TYPE.OPTION}
             options={['Sí', 'No']}
             onCompleteFunction={(response) => {
               console.log(response);
               if (response == 'Sí') {
-                setIsLoading(true);
+                setIsQuestionHide(true);
                 updateGuest({ hasIntolerances: true }, 4);
               } else {
-                setIsLoading(true);
+                setIsQuestionHide(true);
                 updateGuest({ hasIntolerances: false }, 5);
               }
             }}
@@ -123,11 +136,12 @@ function GuestSurvey() {
       case 4:
         return (
           <SurveyQuestion
-            questionText="Deacuerdo no te preocupes, cuentanos tus intolerancias para poder avisar al catering"
+            key={5}
+            questionText="Deacuerdo no te preocupes, cuéntanos tus intolerancias para poder avisar al catering"
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
-              setIsLoading(true);
+              setIsQuestionHide(true);
               updateGuest({ intolerances: response }, 5);
             }}
           />
@@ -136,11 +150,12 @@ function GuestSurvey() {
       case 5:
         return (
           <SurveyQuestion
+            key={6}
             questionText="Ya casi hemos acabado 💪🏽, ¡dime tu canción favorita a ver si podemos incluirla en la lista!"
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
-              setIsLoading(true);
+              setIsQuestionHide(true);
               updateGuest({ favoriteSong: response }, 6);
             }}
           />
@@ -149,11 +164,12 @@ function GuestSurvey() {
       case 6:
         return (
           <SurveyQuestion
+            key={7}
             questionText="En la medida de lo posible intentaremos proporcionar transporte tanto de ida como de vuelta a la finca, ¿estarías interesado? "
             type={QUESTION_TYPE.OPTION}
             options={['Sí', 'No']}
             onCompleteFunction={(response) => {
-              setIsLoading(true);
+              setIsQuestionHide(true);
               if (response == 'Sí') {
                 updateGuest({ interestedInTransport: true }, 7);
               } else {
@@ -164,33 +180,39 @@ function GuestSurvey() {
         );
         break;
       case 7:
-        return (
-          <SurveyQuestion
-            questionText="Por último cuentanos, ¿Traerás acompañante?"
-            type={QUESTION_TYPE.OPTION}
-            options={['Sí', 'No']}
-            onCompleteFunction={(response) => {
-              setIsLoading(true);
-              if (response == 'Sí') {
-                updateGuest({ hasCompanion: true }, 8);
-              } else {
-                updateGuest(
-                  { hasCompanion: false, status: GUEST_STATUS.COMPLETE },
-                  11
-                );
-              }
-            }}
-          />
-        );
+        if (code == 'NYC2025') {
+          return (
+            <SurveyQuestion
+              key={8}
+              questionText="Por último cuentanos, ¿Traerás acompañante?"
+              type={QUESTION_TYPE.OPTION}
+              options={['Sí', 'No']}
+              onCompleteFunction={(response) => {
+                setIsQuestionHide(true);
+                if (response == 'Sí') {
+                  updateGuest({ hasCompanion: true }, 8);
+                } else {
+                  updateGuest(
+                    { hasCompanion: false, status: GUEST_STATUS.COMPLETE },
+                    11
+                  );
+                }
+              }}
+            />
+          );
+        } else {
+          navigate('/landing');
+        }
         break;
       case 8:
         return (
           <SurveyQuestion
+            key={9}
             questionText="¿Y cómo se llama?"
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
-              setIsLoading(true);
+              setIsQuestionHide(true);
               updateGuest({ companionCompleteName: response }, 9);
             }}
           />
@@ -199,11 +221,12 @@ function GuestSurvey() {
       case 9:
         return (
           <SurveyQuestion
+            key={10}
             questionText="¿Tiene alguna alergia o intolerancia?"
             type={QUESTION_TYPE.OPTION}
             options={['Sí', 'No']}
             onCompleteFunction={(response) => {
-              setIsLoading(true);
+              setIsQuestionHide(true);
               if (response == 'Sí') {
                 updateGuest({ companionHasIntolerances: true }, 10);
               } else {
@@ -222,11 +245,12 @@ function GuestSurvey() {
       case 10:
         return (
           <SurveyQuestion
+            key={11}
             questionText="¿Cuales?"
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
-              setIsLoading(true);
+              setIsQuestionHide(true);
               updateGuest(
                 {
                   companionIntolerances: response,
@@ -249,19 +273,19 @@ function GuestSurvey() {
     if (lsGuestId) {
       getGuest(lsGuestId);
     } else {
-      setIsLoading(false);
+      setIsQuestionHide(false);
     }
   }, []);
 
   return (
-    <div className="min-h-[100vh] min-w-[100vw] flex flex-col items-center justify-center align-middle">
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <div className="w-[80%] flex flex-col gap-3">
-          {getActualQuestionComponent()}
-        </div>
-      )}
+    <div className="min-h-[100vh] sm:min-w-[900px] max-w-[900px] bg-[#397374] flex flex-col items-center justify-center align-middle">
+      <div
+        className={`w-[80%] flex flex-col gap-3 transition-opacity duration-[1000ms] ${
+          isQuestionHide ? 'opacity-0' : 'opacity-100'
+        }`}
+      >
+        {getActualQuestionComponent()}
+      </div>
     </div>
   );
 }

@@ -68,3 +68,8 @@ export const getActualQuestion = (guest): number => {
 
   return actualQuestion;
 };
+
+export const isValidEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
