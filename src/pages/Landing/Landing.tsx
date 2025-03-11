@@ -16,6 +16,14 @@ function Landing() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
+        className="text-4xl underline mb-4 mt-4"
+      >
+        ¡Gracias por venir!
+      </motion.h1>
+      <motion.h1
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
         className="text-4xl underline"
       >
         Disclaimer
