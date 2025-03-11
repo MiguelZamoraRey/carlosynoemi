@@ -43,6 +43,7 @@ const SurveyQuestion: React.FC<SurveyQuestionProps> = ({
           <div className="w-[100%] flex flex-row justify-between align-middle gap-5 ">
             {options.map((op) => (
               <button
+                key={op}
                 className="w-[40%] text-2xl border border-[#d8d5be] text-[#d8d5be] rounded-xl p-4 hover:bg-[#d8d5be] hover:text-[#397374]"
                 onClick={() => onCompleteFunction(op)}
               >
