@@ -22,14 +22,13 @@ function Home() {
   }, []);
 
   const handleCheckCode = () => {
-    console.log(code);
-    if (code === 'NYC2025') {
+    if (code.toLocaleUpperCase() === 'NYC2025') {
       setAnimationStart(true);
 
       setTimeout(() => {
         navigate('/survey/NYC2025');
       }, 1000);
-    } else if (code === 'CYN2025') {
+    } else if (code.toLocaleUpperCase() === 'CYN2025') {
       setAnimationStart(true);
       setTimeout(() => {
         navigate('/survey/CYN2025');
@@ -40,7 +39,7 @@ function Home() {
   };
 
   return (
-    <div className="p-0 m-0  md:min-w-[900px] max-w-[900px] min-h-[100vh]">
+    <div className="p-0 m-0  md:min-w-[900px] max-w-[900px] min-h-[100vh] overflow-hidden">
       <div className="flex flex-col items-center justify-center align-middle h-[100vh] p-2 bg-[#397374]">
         <motion.img
           className={`max-h-[60vh] transition-transform`}
