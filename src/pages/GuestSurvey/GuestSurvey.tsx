@@ -68,7 +68,7 @@ function GuestSurvey() {
         return (
           <SurveyQuestion
             key={1}
-            questionText="¡Hola 🖐🏽!, para poder saber quien eres necesito que me digas tu email, te notificaremos allí toda la información"
+            questionText="🖐🏽 ¡Hola!, para poder saber quien eres necesito que me digas tu email, te notificaremos allí toda la información"
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             hasError={hasError}
