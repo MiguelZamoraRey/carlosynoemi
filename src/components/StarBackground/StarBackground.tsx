@@ -1,32 +1,43 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './StarBackground.css';
+import starSvg from './star.svg';
 
 const StarBackground: React.FC = () => {
+  const [stars, setStars] = useState<{ x: number; y: number; size: number }[]>(
+    []
+  );
+
   useEffect(() => {
-    function generateBoxShadow(n: number): string {
-      const shadows: string[] = [];
-      for (let i = 0; i < n; i++) {
-        const x = Math.floor(Math.random() * 2000);
-        const y = Math.floor(Math.random() * 2000);
-        shadows.push(`${x}px ${y}px #d8d5be`);
-      }
-      return shadows.join(', ');
+    function generateStars(
+      n: number
+    ): { x: number; y: number; size: number }[] {
+      return Array.from({ length: n }, () => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        size: Math.random() * 10 + 5,
+      }));
     }
 
-    const stars = document.getElementById('stars');
-    const stars2 = document.getElementById('stars2');
-    const stars3 = document.getElementById('stars3');
-
-    if (stars) stars.style.boxShadow = generateBoxShadow(700);
-    if (stars2) stars2.style.boxShadow = generateBoxShadow(200);
-    if (stars3) stars3.style.boxShadow = generateBoxShadow(100);
+    setStars(generateStars(300));
   }, []);
 
   return (
     <div className="star-background">
-      <div id="stars"></div>
-      <div id="stars2"></div>
-      <div id="stars3"></div>
+      {stars.map((star, index) => (
+        <img
+          key={index}
+          src={starSvg}
+          alt="star"
+          className="star"
+          style={{
+            left: star.x,
+            top: star.y,
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            zIndex: -1,
+          }}
+        />
+      ))}
     </div>
   );
 };
