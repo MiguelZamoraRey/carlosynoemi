@@ -19,8 +19,8 @@
 
 #stars,
 #stars:after {
-  width: 2px;
-  height: 2px;
+  width: 1px;
+  height: 1px;
   animation: animStar 50s linear infinite;
 }
 
@@ -30,8 +30,8 @@
 
 #stars2,
 #stars2:after {
-  width: 4px;
-  height: 4px;
+  width: 2px;
+  height: 2px;
   animation: animStar 100s linear infinite;
 }
 
@@ -41,8 +41,8 @@
 
 #stars3,
 #stars3:after {
-  width: 6px;
-  height: 6px;
+  width: 3px;
+  height: 3px;
   animation: animStar 150s linear infinite;
 }
 
