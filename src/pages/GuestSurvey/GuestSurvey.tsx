@@ -25,6 +25,9 @@ function GuestSurvey() {
     setTimeout(() => {
       setIsQuestionHide(false);
     }, 500);
+    if (code != 'NYC2025' && code != 'CYN2025') {
+      navigate('/');
+    }
   }, []);
 
   const getGuest = async (id) => {
