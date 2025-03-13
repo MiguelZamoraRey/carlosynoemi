@@ -28,7 +28,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #d8d5be;
+  /* background-color: #d8d5be;*/
 }
 
 .swiper {
@@ -47,4 +47,8 @@ body {
 .swiper-slide img {
   display: block;
   width: 100%;
+}
+
+.star-background {
+  margin-left: -30% !important;
 }

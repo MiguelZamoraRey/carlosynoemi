@@ -1,0 +1,60 @@
+.star-background {
+  z-index: -10;
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, #397374 0%, #567a7b 100%);
+  overflow: hidden;
+  margin: 0;
+}
+
+#stars,
+#stars:after,
+#stars2,
+#stars2:after,
+#stars3,
+#stars3:after {
+  content: ' ';
+  position: absolute;
+  background: transparent;
+}
+
+#stars,
+#stars:after {
+  width: 2px;
+  height: 2px;
+  animation: animStar 50s linear infinite;
+}
+
+#stars:after {
+  top: 2000px;
+}
+
+#stars2,
+#stars2:after {
+  width: 4px;
+  height: 4px;
+  animation: animStar 100s linear infinite;
+}
+
+#stars2:after {
+  top: 2000px;
+}
+
+#stars3,
+#stars3:after {
+  width: 6px;
+  height: 6px;
+  animation: animStar 150s linear infinite;
+}
+
+#stars3:after {
+  top: 2000px;
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
