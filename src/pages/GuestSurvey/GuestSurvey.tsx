@@ -55,7 +55,7 @@ function GuestSurvey() {
   };
 
   const createANewGuest = async (email) => {
-    const result = await createNewGuest(email);
+    const result = await createNewGuest(email, code);
     if (result.response == RESPONSE_TYPES.OK) {
       localStorage.setItem('guestId', result.data._id);
       setActualQuestion(1);

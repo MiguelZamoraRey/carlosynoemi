@@ -4,6 +4,7 @@ import './Home.css';
 import SaveTheDate from '../../assets/images/Save the Date.webp';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { getGuestById } from '../../services/GuestService';
 
 function Home() {
   const [isQuestionHide, setIsQuestionHide] = useState(true);
@@ -17,7 +18,20 @@ function Home() {
     }, 500);
     const guestId = localStorage.getItem('guestId');
     if (guestId) {
-      navigate('/landing');
+      const getGuest = async () => {
+        const response = await getGuestById(guestId);
+        if (response && response.data.status === 'COMPLETE') {
+          navigate('/landing');
+        } else if (
+          response.data.status === 'INCOMPLETE' &&
+          response.data.code
+        ) {
+          navigate(`/survey/${response.data.code}`);
+        } else {
+          localStorage.clear();
+        }
+      };
+      getGuest();
     }
   }, []);
 

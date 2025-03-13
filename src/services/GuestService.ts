@@ -25,7 +25,7 @@ export const getGuestById = async (id: string): Promise<IApiResponse> => {
   return response.json();
 };
 
-export const createNewGuest = async (email): Promise<IApiResponse> => {
+export const createNewGuest = async (email, code): Promise<IApiResponse> => {
   const response = await fetch(`${BACK_URL}/guest`, {
     method: 'POST',
     headers: {
@@ -34,6 +34,7 @@ export const createNewGuest = async (email): Promise<IApiResponse> => {
     },
     body: JSON.stringify({
       email: email,
+      cose: code,
     }),
   });
 
