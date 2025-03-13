@@ -34,7 +34,7 @@ export const createNewGuest = async (email, code): Promise<IApiResponse> => {
     },
     body: JSON.stringify({
       email: email,
-      cose: code,
+      code: code,
     }),
   });
 
