@@ -8,9 +8,7 @@ const StarBackground: React.FC = () => {
   >([]);
 
   useEffect(() => {
-    function generateStars(
-      n: number
-    ): {
+    function generateStars(n: number): {
       x: number;
       y: number;
       size: number;
@@ -26,7 +24,7 @@ const StarBackground: React.FC = () => {
       }));
     }
 
-    setStars(generateStars(300));
+    setStars(generateStars(150));
   }, []);
 
   return (
