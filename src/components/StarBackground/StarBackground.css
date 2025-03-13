@@ -1,18 +1,17 @@
 .star-background {
   z-index: -10;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
   background: radial-gradient(ellipse at bottom, #397374 0%, #567a7b 100%);
   overflow: hidden;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
 }
 
 .star {
   position: absolute;
-  animation: animStar 10s linear infinite;
+  animation: animStar 20s linear infinite;
 }
 
 @keyframes animStar {
