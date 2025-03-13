@@ -28,7 +28,7 @@ const StarBackground: React.FC = () => {
   }, []);
 
   return (
-    <div className="star-background">
+    <div className="star-background opacity-50">
       {stars.map((star, index) => (
         <img
           key={index}
