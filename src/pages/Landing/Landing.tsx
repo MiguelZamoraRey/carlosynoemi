@@ -5,7 +5,7 @@ import 'swiper/css/pagination';
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../../components/Header/HeaderV2';
+import Header from '../../components/Header/Header';
 
 function Landing() {
   const navigate = useNavigate();
