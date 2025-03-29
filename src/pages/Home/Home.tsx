@@ -10,7 +10,8 @@ import { isValidEmail } from '../../utils/generalMethods';
 function Home() {
   const [isQuestionHide, setIsQuestionHide] = useState(true);
   const [animationStart, setAnimationStart] = useState(false);
-  const [email, setEmail] = useState(null);
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,7 +38,7 @@ function Home() {
   }, []);
 
   const handleCheckEmail = () => {
-    if (email && isValidEmail(email)) {
+    if (email != '' && isValidEmail(email)) {
       const getOrCreateGuest = async () => {
         const response = await createNewGuest(email);
         const guestId = response.data._id;
@@ -49,7 +50,7 @@ function Home() {
       };
       getOrCreateGuest();
     } else {
-      console.log('Email incorrecto');
+      setError('El email no parece correcto');
       setEmail(null);
     }
   };
@@ -75,6 +76,15 @@ function Home() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          <div
+            className={`${
+              error.length > 0
+                ? 'flex align-middle justify-center'
+                : 'invisible'
+            }`}
+          >
+            <span className={`text-xs w-full`}>{error}</span>
+          </div>
           <button
             onClick={() => {
               handleCheckEmail();

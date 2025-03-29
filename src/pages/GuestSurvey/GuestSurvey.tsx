@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react';
-import {
-  createNewGuest,
-  getGuestById,
-  updateGuestData,
-} from '../../services/GuestService';
+import { getGuestById, updateGuestData } from '../../services/GuestService';
 import {
   GUEST_STATUS,
   QUESTION_TYPE,
@@ -16,10 +12,9 @@ import { motion } from 'framer-motion';
 
 function GuestSurvey() {
   const { guestId } = useParams();
-  const [hasError, setHasError] = useState(false);
   const [isQuestionHide, setIsQuestionHide] = useState(false);
   const navigate = useNavigate();
-  const [actualQuestion, setActualQuestion] = useState(0);
+  const [actualQuestion, setActualQuestion] = useState(1);
 
   useEffect(() => {
     setTimeout(() => {
@@ -54,40 +49,13 @@ function GuestSurvey() {
     }, 1000);
   };
 
-  const createANewGuest = async (email) => {
-    const result = await createNewGuest(email);
-    if (result.response == RESPONSE_TYPES.OK) {
-      localStorage.setItem('guestId', result.data._id);
-      setActualQuestion(1);
-    } else {
-      setHasError(true);
-    }
-    setIsQuestionHide(false);
-  };
-
   const getActualQuestionComponent = () => {
     switch (actualQuestion) {
-      case 0:
-        return (
-          <SurveyQuestion
-            key={1}
-            questionText="🖐🏽 ¡Hola!, para poder saber quien eres necesito que me digas tu email, te notificaremos allí toda la información"
-            type={QUESTION_TYPE.FREE_TEXT}
-            options={null}
-            hasError={hasError}
-            errorMessage="🥲 Parece que no es un email válido... Por favor indícame uno válido ya que te confirmaremos los datos por allí."
-            onCompleteFunction={(response) => {
-              setIsQuestionHide(true);
-              createANewGuest(response);
-            }}
-          />
-        );
-        break;
       case 1:
         return (
           <SurveyQuestion
-            key={2}
-            questionText="¡Genial!, ¿Me puedes decir tu nombre completo?"
+            key={1}
+            questionText="¡Genial! Necesito que me digas tu nombre y apellidos."
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
@@ -99,8 +67,8 @@ function GuestSurvey() {
       case 2:
         return (
           <SurveyQuestion
-            key={3}
-            questionText="¿Podrás acudir a nuestra boda?"
+            key={2}
+            questionText="Aquí viene la gran pregunta, ¿podrás acudir a nuestra boda?"
             type={QUESTION_TYPE.OPTION}
             options={['Sí', 'No']}
             onCompleteFunction={(response) => {
@@ -110,7 +78,7 @@ function GuestSurvey() {
               } else {
                 updateGuest(
                   { confirmAssistance: false, status: GUEST_STATUS.COMPLETE },
-                  11
+                  15
                 );
               }
             }}
@@ -120,8 +88,8 @@ function GuestSurvey() {
       case 3:
         return (
           <SurveyQuestion
-            key={4}
-            questionText="¿Tienes alguna intolerancia o alergia?"
+            key={3}
+            questionText="¡Que bien!, ¿Tienes alguna intolerancia o alergia?"
             type={QUESTION_TYPE.OPTION}
             options={['Sí', 'No']}
             onCompleteFunction={(response) => {
@@ -138,8 +106,8 @@ function GuestSurvey() {
       case 4:
         return (
           <SurveyQuestion
-            key={5}
-            questionText="Deacuerdo no te preocupes, cuéntanos tus intolerancias para poder avisar al catering"
+            key={4}
+            questionText="¡Vale!, Cuéntanos qué necesidades tienes para avisar al catering"
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
@@ -151,12 +119,19 @@ function GuestSurvey() {
       case 5:
         return (
           <SurveyQuestion
-            key={6}
-            questionText="Ya casi hemos acabado 💪🏽, ¡dime tu canción favorita a ver si podemos incluirla en la lista!"
-            type={QUESTION_TYPE.FREE_TEXT}
-            options={null}
+            key={5}
+            questionText="Seguimos, ¿Traerás acompañante?"
+            type={QUESTION_TYPE.OPTION}
+            options={['Sí', 'No']}
             onCompleteFunction={(response) => {
-              updateGuest({ favoriteSong: response }, 6);
+              if (response == 'Sí') {
+                updateGuest({ hasCompanion: true }, 6);
+              } else {
+                updateGuest(
+                  { hasCompanion: false, status: GUEST_STATUS.COMPLETE },
+                  9
+                );
+              }
             }}
           />
         );
@@ -164,16 +139,12 @@ function GuestSurvey() {
       case 6:
         return (
           <SurveyQuestion
-            key={7}
-            questionText="En la medida de lo posible intentaremos proporcionar transporte tanto de ida como de vuelta a la finca, ¿estarías interesado? "
-            type={QUESTION_TYPE.OPTION}
-            options={['Sí', 'No']}
+            key={6}
+            questionText="¿Cómo se llama?"
+            type={QUESTION_TYPE.FREE_TEXT}
+            options={null}
             onCompleteFunction={(response) => {
-              if (response == 'Sí') {
-                updateGuest({ interestedInTransport: true }, 7);
-              } else {
-                updateGuest({ interestedInTransport: false }, 7);
-              }
+              updateGuest({ companionCompleteName: response }, 7);
             }}
           />
         );
@@ -181,17 +152,20 @@ function GuestSurvey() {
       case 7:
         return (
           <SurveyQuestion
-            key={8}
-            questionText="Por último cuentanos, ¿Traerás acompañante?"
+            key={7}
+            questionText="¿Tiene alguna alergia o intolerancia?"
             type={QUESTION_TYPE.OPTION}
             options={['Sí', 'No']}
             onCompleteFunction={(response) => {
               if (response == 'Sí') {
-                updateGuest({ hasCompanion: true }, 8);
+                updateGuest({ companionHasIntolerances: true }, 8);
               } else {
                 updateGuest(
-                  { hasCompanion: false, status: GUEST_STATUS.COMPLETE },
-                  11
+                  {
+                    companionHasIntolerances: false,
+                    status: GUEST_STATUS.COMPLETE,
+                  },
+                  9
                 );
               }
             }}
@@ -201,12 +175,18 @@ function GuestSurvey() {
       case 8:
         return (
           <SurveyQuestion
-            key={9}
-            questionText="¿Y cómo se llama?"
+            key={8}
+            questionText="¿Cuales?"
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
-              updateGuest({ companionCompleteName: response }, 9);
+              updateGuest(
+                {
+                  companionIntolerances: response,
+                  status: GUEST_STATUS.COMPLETE,
+                },
+                9
+              );
             }}
           />
         );
@@ -214,18 +194,17 @@ function GuestSurvey() {
       case 9:
         return (
           <SurveyQuestion
-            key={10}
-            questionText="¿Tiene alguna alergia o intolerancia?"
+            key={9}
+            questionText="¿Van a venir niños contigo?"
             type={QUESTION_TYPE.OPTION}
             options={['Sí', 'No']}
             onCompleteFunction={(response) => {
               if (response == 'Sí') {
-                updateGuest({ companionHasIntolerances: true }, 10);
+                updateGuest({ hasChilds: true }, 10);
               } else {
                 updateGuest(
                   {
-                    companionHasIntolerances: false,
-                    status: GUEST_STATUS.COMPLETE,
+                    hasChilds: false,
                   },
                   11
                 );
@@ -237,23 +216,47 @@ function GuestSurvey() {
       case 10:
         return (
           <SurveyQuestion
-            key={11}
-            questionText="¿Cuales?"
+            key={10}
+            questionText="¿Cómo se llaman?"
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
-              updateGuest(
-                {
-                  companionIntolerances: response,
-                  status: GUEST_STATUS.COMPLETE,
-                },
-                11
-              );
+              updateGuest({ childNames: response }, 11);
             }}
           />
         );
         break;
       case 11:
+        return (
+          <SurveyQuestion
+            key={11}
+            questionText="¿Vas a querer venir en autobús? Cuando nos confirméis quienes están interesados publicaremos toda la información en la página web"
+            type={QUESTION_TYPE.OPTION}
+            options={['Si, ida y vuelta', 'No, voy por mi cuenta']}
+            onCompleteFunction={(response) => {
+              if (response == 'Sí') {
+                updateGuest({ interestedInTransport: true }, 12);
+              } else {
+                updateGuest({ interestedInTransport: false }, 12);
+              }
+            }}
+          />
+        );
+        break;
+      case 12:
+        return (
+          <SurveyQuestion
+            key={12}
+            questionText="Por último 💪🏽, ¡Dime tu canción favorita! Con un poco de suerte podrás escucharla en la boda."
+            type={QUESTION_TYPE.FREE_TEXT}
+            options={null}
+            onCompleteFunction={(response) => {
+              updateGuest({ favoriteSong: response }, 15);
+            }}
+          />
+        );
+        break;
+      case 15:
         navigate('/landing');
         break;
     }

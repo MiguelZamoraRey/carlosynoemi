@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import './StarBackground.css';
 import starSvg from './star.svg';
 
-import bolutaIzq from '../../assets/images/BOLUTAS_IZDA.webp';
-import bolutaDer from '../../assets/images/BOLUTAS_DER.webp';
+import bolutaIzq from '../../assets/images/BOLUTAS_IZDA1.webp';
+import bolutaDer from '../../assets/images/BOLUTAS_DER1.webp';
 
 const StarBackground: React.FC = () => {
   const [stars, setStars] = useState<
