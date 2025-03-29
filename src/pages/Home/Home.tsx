@@ -40,6 +40,7 @@ function Home() {
   const handleCheckEmail = () => {
     if (email != '' && isValidEmail(email)) {
       const getOrCreateGuest = async () => {
+        setIsQuestionHide(true);
         const response = await createNewGuest(email);
         const guestId = response.data._id;
         setAnimationStart(true);
@@ -61,7 +62,7 @@ function Home() {
         <motion.img
           className={`max-h-[60vh] transition-transform z-40`}
           transition={{ duration: 1.5 }}
-          animate={animationStart ? { scale: [1, 4] } : {}}
+          animate={animationStart ? { opacity: [1, 0] } : {}}
           src={SaveTheDate}
         />
         <div
