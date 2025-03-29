@@ -4,12 +4,13 @@ import './Home.css';
 import SaveTheDate from '../../assets/images/Save the Date.webp';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { getGuestById } from '../../services/GuestService';
+import { createNewGuest, getGuestById } from '../../services/GuestService';
+import { isValidEmail } from '../../utils/generalMethods';
 
 function Home() {
   const [isQuestionHide, setIsQuestionHide] = useState(true);
   const [animationStart, setAnimationStart] = useState(false);
-  const [code, setCode] = useState('');
+  const [email, setEmail] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,20 +36,21 @@ function Home() {
     }
   }, []);
 
-  const handleCheckCode = () => {
-    if (code.toLocaleUpperCase() === 'NYC2025') {
-      setAnimationStart(true);
-
-      setTimeout(() => {
-        navigate('/survey/NYC2025');
-      }, 1000);
-    } else if (code.toLocaleUpperCase() === 'CYN2025') {
-      setAnimationStart(true);
-      setTimeout(() => {
-        navigate('/survey/CYN2025');
-      }, 1000);
+  const handleCheckEmail = () => {
+    if (email && isValidEmail(email)) {
+      const getOrCreateGuest = async () => {
+        const response = await createNewGuest(email);
+        const guestId = response.data._id;
+        setAnimationStart(true);
+        localStorage.setItem('guestId', guestId);
+        setTimeout(() => {
+          navigate(`/survey/${guestId}`);
+        }, 1000);
+      };
+      getOrCreateGuest();
     } else {
-      console.log('Código incorrecto');
+      console.log('Email incorrecto');
+      setEmail(null);
     }
   };
 
@@ -66,16 +68,16 @@ function Home() {
             isQuestionHide ? 'opacity-0' : 'opacity-100'
           }`}
         >
-          Introduce el código que verás en tu tarjeta:
+          Introduce tu email:
           <input
             type="text"
             className="border rounded-lg bg-transparent p-2 focus:outline-none"
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <button
             onClick={() => {
-              handleCheckCode();
+              handleCheckEmail();
             }}
             className="border rounded-lg font-bold transition-text duration-[500ms] bg-[#d8d5be] text-[#397374] p-2 hover:bg-[#397374] hover:text-[#d8d5be]"
           >

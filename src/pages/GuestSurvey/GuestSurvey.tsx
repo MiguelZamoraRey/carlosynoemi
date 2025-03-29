@@ -15,7 +15,7 @@ import SurveyQuestion from '../../components/SurveyQuestion';
 import { motion } from 'framer-motion';
 
 function GuestSurvey() {
-  const { code } = useParams();
+  const { guestId } = useParams();
   const [hasError, setHasError] = useState(false);
   const [isQuestionHide, setIsQuestionHide] = useState(false);
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ function GuestSurvey() {
     setTimeout(() => {
       setIsQuestionHide(false);
     }, 500);
-    if (code != 'NYC2025' && code != 'CYN2025') {
+    if (!guestId) {
       navigate('/');
     }
   }, []);
@@ -55,7 +55,7 @@ function GuestSurvey() {
   };
 
   const createANewGuest = async (email) => {
-    const result = await createNewGuest(email, code);
+    const result = await createNewGuest(email);
     if (result.response == RESPONSE_TYPES.OK) {
       localStorage.setItem('guestId', result.data._id);
       setActualQuestion(1);
@@ -179,28 +179,24 @@ function GuestSurvey() {
         );
         break;
       case 7:
-        if (code == 'NYC2025') {
-          return (
-            <SurveyQuestion
-              key={8}
-              questionText="Por último cuentanos, ¿Traerás acompañante?"
-              type={QUESTION_TYPE.OPTION}
-              options={['Sí', 'No']}
-              onCompleteFunction={(response) => {
-                if (response == 'Sí') {
-                  updateGuest({ hasCompanion: true }, 8);
-                } else {
-                  updateGuest(
-                    { hasCompanion: false, status: GUEST_STATUS.COMPLETE },
-                    11
-                  );
-                }
-              }}
-            />
-          );
-        } else {
-          navigate('/landing');
-        }
+        return (
+          <SurveyQuestion
+            key={8}
+            questionText="Por último cuentanos, ¿Traerás acompañante?"
+            type={QUESTION_TYPE.OPTION}
+            options={['Sí', 'No']}
+            onCompleteFunction={(response) => {
+              if (response == 'Sí') {
+                updateGuest({ hasCompanion: true }, 8);
+              } else {
+                updateGuest(
+                  { hasCompanion: false, status: GUEST_STATUS.COMPLETE },
+                  11
+                );
+              }
+            }}
+          />
+        );
         break;
       case 8:
         return (

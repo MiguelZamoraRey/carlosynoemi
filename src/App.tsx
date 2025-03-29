@@ -21,7 +21,7 @@ function App() {
           }
         />
         <Route
-          path="/survey/:code"
+          path="/survey/:guestId"
           element={
             <>
               <StarBackground />

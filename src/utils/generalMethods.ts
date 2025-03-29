@@ -1,8 +1,5 @@
 export const getActualQuestion = (guest): number => {
-  let actualQuestion = 0;
-  if (guest.email != undefined && guest.email != null) {
-    actualQuestion++;
-  }
+  let actualQuestion = 1;
   if (guest.completeName != undefined && guest.completeName != null) {
     actualQuestion++;
   }
