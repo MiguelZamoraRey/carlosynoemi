@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Header({ section, handleOnClickSection }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,11 +9,11 @@ export default function Header({ section, handleOnClickSection }) {
   };
 
   return (
-    <div className="sticky top-0">
-      <div className="flex flex-row justify-center items-center min-w-full bg-[#d8d5be] text-[#397374] p-4">
-        <div className="flex flex-row w-full justify-end md:w-0">
+    <div className="sticky top-0 z-50 bg-[#d8d5be]">
+      <div className="flex flex-row justify-center items-center w-full text-[#397374] p-4">
+        <div className="md:hidden flex items-center ml-auto">
           <button
-            className="md:hidden text-[#397374] focus:outline-none justify-end "
+            className="text-[#397374] focus:outline-none"
             onClick={toggleMenu}
           >
             <svg
@@ -58,7 +59,13 @@ export default function Header({ section, handleOnClickSection }) {
         </div>
       </div>
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-[#d8d5be] text-[#397374] flex flex-col items-center justify-center gap-6">
+        <motion.div
+          className="md:hidden fixed inset-0 bg-[#d8d5be] text-[#397374] flex flex-col items-start justify-center gap-6 p-4"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.3 }}
+        >
           {[
             'Inicio',
             'Nosotros',
@@ -69,7 +76,7 @@ export default function Header({ section, handleOnClickSection }) {
           ].map((item) => (
             <div
               key={item}
-              className="flex flex-col align-middle justify-center"
+              className="flex flex-col align-middle justify-center w-full"
               onClick={() => {
                 handleOnClickSection(item);
                 toggleMenu();
@@ -84,7 +91,7 @@ export default function Header({ section, handleOnClickSection }) {
               </span>
             </div>
           ))}
-        </div>
+        </motion.div>
       )}
     </div>
   );

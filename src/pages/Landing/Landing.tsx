@@ -25,7 +25,7 @@ function Landing() {
   }, []);
 
   return (
-    <div className="h-[100dvh] flex flex-col m-w-full fontNoto">
+    <div className="m-h-[100dvh] flex flex-col m-w-full fontNoto">
       <Header
         section={actualSection}
         handleOnClickSection={(section) => {
