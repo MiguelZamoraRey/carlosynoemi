@@ -1,18 +1,21 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
-import Card from '../../components/Card';
-
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
-import HourCard from '../../components/HourCard';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../../components/Header/HeaderV2';
 
 function Landing() {
   const navigate = useNavigate();
+  const [actualSection, setActualSection] = useState('Inicio');
+  const inicio = useRef();
+  const nosotros = useRef();
+  const horarios = useRef();
+  const donde = useRef();
+  const comoLlegar = useRef();
+  const alojamientos = useRef();
 
   useEffect(() => {
     const guestId = localStorage.getItem('guestId');
@@ -22,147 +25,111 @@ function Landing() {
   }, []);
 
   return (
-    <div className="relative z-100 ">
-      <div className="min-h-[100vh] flex flex-col gap-3 items-center justify-center align-middle p-2 max-w-[900px] bg-[#397374] ">
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-          className="text-4xl underline mb-4 mt-4"
-        >
-          ¡Gracias por venir!
-        </motion.h1>
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-          className="text-4xl underline"
-        >
-          Disclaimer
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-          className=" text-xl"
-        >
-          Vamos a celebrar la boda en un sitio muy bonito y muy especial para
-          nosotros. Como estamos a finales de septiembre es probable que a esas
-          horas caiga bastante la temperatura. ¡Qué no cunda el pánico! Vamos a
-          estar super agusto, pero como diría tu madre:
-        </motion.p>
-        <span className=" text-2xl">
-          "¡Llévate una rebequita que por la noche refresca!"
-        </span>
-        <h1 className="text-4xl underline">Horario</h1>
-        <span className=" text-xl">Enterate de cómo nos lo vamos a pasar</span>
-        <Swiper
-          effect={'coverflow'}
-          grabCursor={true}
-          centeredSlides={true}
-          slidesPerView={'auto'}
-          coverflowEffect={{
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-          }}
-          pagination={true}
-          modules={[EffectCoverflow, Pagination]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <HourCard
-              title="16:30"
-              subtitle1="ACTIVIDAD"
-              imageUrl="https://imgs.search.brave.com/DW8bmf2BFrOvy2ohZyYotlsjKxqwPM3JtqRch9uVolE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hYmVs/cnVlZGEuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIyLzA0/L1Byb3RvY29sby1C/YWlsZS1Cb2RhMi5q/cGc"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc nec ultricies."
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <HourCard
-              title="18:00"
-              subtitle1="ACTIVIDAD"
-              imageUrl="https://imgs.search.brave.com/DW8bmf2BFrOvy2ohZyYotlsjKxqwPM3JtqRch9uVolE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hYmVs/cnVlZGEuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIyLzA0/L1Byb3RvY29sby1C/YWlsZS1Cb2RhMi5q/cGc"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc nec ultricies."
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <HourCard
-              title="20:00"
-              subtitle1="ACTIVIDAD"
-              imageUrl="https://imgs.search.brave.com/DW8bmf2BFrOvy2ohZyYotlsjKxqwPM3JtqRch9uVolE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hYmVs/cnVlZGEuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIyLzA0/L1Byb3RvY29sby1C/YWlsZS1Cb2RhMi5q/cGc"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc nec ultricies."
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <HourCard
-              title="22:00"
-              subtitle1="ACTIVIDAD"
-              imageUrl="https://imgs.search.brave.com/DW8bmf2BFrOvy2ohZyYotlsjKxqwPM3JtqRch9uVolE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hYmVs/cnVlZGEuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIyLzA0/L1Byb3RvY29sby1C/YWlsZS1Cb2RhMi5q/cGc"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc nec ultricies."
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <HourCard
-              title="03:00"
-              subtitle1="ACTIVIDAD"
-              imageUrl="https://imgs.search.brave.com/DW8bmf2BFrOvy2ohZyYotlsjKxqwPM3JtqRch9uVolE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hYmVs/cnVlZGEuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIyLzA0/L1Byb3RvY29sby1C/YWlsZS1Cb2RhMi5q/cGc"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc nec ultricies."
-            />
-          </SwiperSlide>
-        </Swiper>
-        <h1 className="text-4xl underline">Alojamientos</h1>
-        <span className=" text-xl">
-          Si queréis pasar la noche aquí os dejamos un montón de sitios
-          estupendos:
-        </span>
-        <Swiper
-          effect={'coverflow'}
-          grabCursor={true}
-          centeredSlides={true}
-          slidesPerView={'auto'}
-          coverflowEffect={{
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-          }}
-          pagination={true}
-          modules={[EffectCoverflow, Pagination]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <Card
-              title="Finca Prados Riveros"
-              subtitle1="Cno. Finca Prados Riveros"
-              subtitle2="28741, Madrid"
-              imageUrl="https://espaciospradosriveros.com/wp-content/uploads/2024/03/IMG_3174.jpg"
-              description="Casa rural al lado de la finca, que se puede venir andando."
-              link="https://espaciospradosriveros.com/"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card
-              title="La casa del farmaceutico"
-              subtitle1="C/ Grande, 16"
-              subtitle2="Alameda del Valle (Madrid)"
-              imageUrl="https://webp.er2.co/es/madrid/5a097a80710b0/1600/5c02ea65ef54d.webp"
-              description="casa grande de alquiler integro, muy bonita."
-              link="https://www.escapadarural.com/casa-rural/madrid/la-casa-del-farmaceutico"
-            />
-          </SwiperSlide>
-        </Swiper>
-        <div className="p-2 flex flex-col gap-8">
-          <span className="text-2xl">
-            Os pedimos por favor que cualquier cambio nos lo notifiquéis lo
-            antes posible
-          </span>
-
-          <span className="text-2xl pb-16">Nos vemos pronto</span>
-        </div>
+    <div className="h-[100dvh] flex flex-col m-w-full fontNoto">
+      <Header
+        section={actualSection}
+        handleOnClickSection={(section) => {
+          setActualSection(section);
+        }}
+      />
+      <div
+        className="bg-[#397374] text-[#d8d5be] m-h-[10dvh] max-w-[900px] p-2"
+        ref={inicio}
+      >
+        <h1>SECTION</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+      <div
+        className="bg-[#d8d5be] text-[#397374] m-h-[10dvh] max-w-[900px] p-2"
+        ref={nosotros}
+      >
+        <h1>SECTION</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+      <div
+        className="bg-[#397374] text-[#d8d5be] m-h-[10dvh] max-w-[900px] p-2"
+        ref={horarios}
+      >
+        <h1>SECTION</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+      <div
+        className="bg-[#d8d5be] text-[#397374] m-h-[10dvh] max-w-[900px] p-2"
+        ref={donde}
+      >
+        <h1>SECTION</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+      <div
+        className="bg-[#397374] text-[#d8d5be] m-h-[10dvh] max-w-[900px] p-2"
+        ref={comoLlegar}
+      >
+        <h1>SECTION</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+      <div
+        className="bg-[#d8d5be] text-[#397374] m-h-[10dvh] max-w-[900px] p-2"
+        ref={alojamientos}
+      >
+        <h1>SECTION</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
       </div>
     </div>
   );

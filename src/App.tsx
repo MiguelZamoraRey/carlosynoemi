@@ -29,15 +29,7 @@ function App() {
             </>
           }
         />
-        <Route
-          path="/landing"
-          element={
-            <>
-              <StarBackground />
-              <Landing />
-            </>
-          }
-        />
+        <Route path="/landing" element={<Landing />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

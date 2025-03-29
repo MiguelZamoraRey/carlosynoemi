@@ -57,7 +57,7 @@ function Home() {
   };
 
   return (
-    <div className="p-0 m-0 md:min-w-[900px] max-w-[900px] min-h-[100vh] overflow-hidden relative z-12">
+    <div className="p-0 m-0 m-w-full md:m-w-[900px] max-w-[900px] m-h-[100vh] overflow-hidden relative z-12">
       <div className="flex flex-col items-center justify-center align-middle h-[100vh] p-2">
         <motion.img
           className={`max-h-[60vh] transition-transform z-40`}
