@@ -10,12 +10,12 @@ import Header from '../../components/Header/Header';
 function Landing() {
   const navigate = useNavigate();
   const [actualSection, setActualSection] = useState('Inicio');
-  const inicio = useRef();
-  const nosotros = useRef();
-  const horarios = useRef();
-  const donde = useRef();
-  const comoLlegar = useRef();
-  const alojamientos = useRef();
+  const inicio = useRef<HTMLDivElement>(null);
+  const nosotros = useRef<HTMLDivElement>(null);
+  const horarios = useRef<HTMLDivElement>(null);
+  const donde = useRef<HTMLDivElement>(null);
+  const comoLlegar = useRef<HTMLDivElement>(null);
+  const alojamientos = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const guestId = localStorage.getItem('guestId');
@@ -24,12 +24,65 @@ function Landing() {
     }
   }, []);
 
+  const handleNavigateFromSection = (section: string) => {
+    setActualSection(section);
+    switch (section) {
+      case 'Inicio':
+        if (inicio.current) {
+          inicio.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        break;
+      case 'Nosotros':
+        if (nosotros.current) {
+          nosotros.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+        }
+        break;
+      case 'Horarios':
+        if (horarios.current) {
+          horarios.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+        }
+        break;
+      case 'Dónde':
+        if (donde.current) {
+          donde.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        break;
+      case 'Cómo llegar':
+        if (comoLlegar.current) {
+          comoLlegar.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+        }
+        break;
+      case 'Alojamientos':
+        if (alojamientos.current) {
+          alojamientos.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+        }
+        break;
+      default:
+        if (inicio.current) {
+          inicio.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        break;
+    }
+  };
+
   return (
-    <div className="m-h-[100dvh] flex flex-col m-w-full fontNoto">
+    <div className="m-h-[100dvh] flex flex-col m-w-full fontNoto scroll-smooth ">
       <Header
         section={actualSection}
         handleOnClickSection={(section) => {
-          setActualSection(section);
+          handleNavigateFromSection(section);
         }}
       />
       <div
