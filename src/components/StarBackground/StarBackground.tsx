@@ -4,7 +4,6 @@ import starSvg from './star.svg';
 
 import bolutaIzq from '../../assets/images/BOLUTAS_IZDA.webp';
 import bolutaDer from '../../assets/images/BOLUTAS_DER.webp';
-import bolutaBot from '../../assets/images/BOLUTAS_CENTRO.webp';
 
 const StarBackground: React.FC = () => {
   const [stars, setStars] = useState<
@@ -33,15 +32,17 @@ const StarBackground: React.FC = () => {
 
   return (
     <div>
-      <div className="absolute left-0 z-10 w-[1/5] invisible sm:visible">
+      <div className="absolute left-0 z-10 w-[1/5] invisible lg:visible">
         <img src={bolutaIzq} className="object-cover w-auto max-h-dvh" />
       </div>
-      <div className="absolute right-0 z-10 w-[1/5] invisible sm:visible">
+      <div className="absolute right-0 z-10 w-[1/5] invisible lg:visible">
         <img src={bolutaDer} className="object-cover w-auto max-h-dvh" />
       </div>
+      {/*
       <div className="absolute bottom-0 z-10 left-[30%] w-[40%] invisible sm:visible">
         <img src={bolutaBot} className="object-cover w-auto max-h-dvh" />
       </div>
+      */}
       <div className="star-background opacity-50">
         {stars.map((star, index) => (
           <img
