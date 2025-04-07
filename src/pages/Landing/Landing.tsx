@@ -92,7 +92,7 @@ function Landing() {
         className="bg-[#d8d5be] text-[#397374] m-h-[10dvh] max-w-[900px] p-4 flex flex-col gap-6"
         ref={nosotros}
       >
-        <h1 className="text-2xl font-bold">Sobre nosotros</h1>
+        <h1 className="text-3xl font-extrabold">Sobre nosotros</h1>
         <p>¡Que si! ¡Que nos casamos!</p>
         <p>
           Y si has llegado a esta página es porque eres una persona muy especial
@@ -113,7 +113,7 @@ function Landing() {
         className="bg-[#397374] text-[#d8d5be] m-h-[10dvh] max-w-[900px]  p-4 flex flex-col gap-6"
         ref={horarios}
       >
-        <h1 className="text-2xl font-bold">Horario</h1>
+        <h1 className="text-3xl font-extrabold">Horario</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -137,7 +137,7 @@ function Landing() {
         className="bg-[#d8d5be] text-[#397374] m-h-[10dvh] max-w-[900px]  p-4 flex flex-col gap-6"
         ref={donde}
       >
-        <h1 className="text-2xl font-bold">La finca</h1>
+        <h1 className="text-3xl font-extrabold">La finca</h1>
         <p>
           Toda la celebración va a tener lugar en la finca Prados Riveros, en
           Rascafría. Es un espacio muy especial que nos enamoró desde el primer
@@ -149,7 +149,7 @@ function Landing() {
           el pánico! Vamos a estar super agusto, pero como diría tu madre:
         </p>
         <div className="flex flex-row justify-center align-middle items-center">
-          <span className="font-semibold text-xl">
+          <span className="font-bold text-xl">
             "¡Llévate una rebequita que por la noche refresca!" *
           </span>
         </div>
@@ -162,7 +162,7 @@ function Landing() {
         className="bg-[#397374] text-[#d8d5be] m-h-[10dvh] max-w-[900px]  p-4 flex flex-col gap-6"
         ref={comoLlegar}
       >
-        <h1 className="text-2xl font-bold">Cómo llegar</h1>
+        <h1 className="text-3xl font-extrabold">Cómo llegar</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -186,7 +186,7 @@ function Landing() {
         className="bg-[#d8d5be] text-[#397374] m-h-[10dvh] max-w-[900px]  p-4 flex flex-col gap-6"
         ref={alojamientos}
       >
-        <h1 className="text-2xl font-bold">Alojamientos </h1>
+        <h1 className="text-3xl font-extrabold">Alojamientos </h1>
         <p>
           En el caso de que prefieras pasar la noche en Rascafría aquí tenéis
           algunas recomendaciones de alojamientos. Llamad de parte de Jorge
