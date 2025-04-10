@@ -35,12 +35,12 @@ export default function Header({ section, handleOnClickSection }) {
         </div>
         <div className="hidden md:flex flex-row justify-center align-middle gap-6">
           {[
-            'Inicio',
-            'Nosotros',
-            'Horarios',
-            'Dónde',
-            'Cómo llegar',
-            'Alojamientos',
+            'INICIO',
+            'NOSOTROS',
+            'HORARIOS',
+            'DÓNDE',
+            'CÓMO LLEGAR',
+            'ALOJAMIENTOS',
           ].map((item) => (
             <div
               key={item}
@@ -67,12 +67,12 @@ export default function Header({ section, handleOnClickSection }) {
           transition={{ duration: 0.3 }}
         >
           {[
-            'Inicio',
-            'Nosotros',
-            'Horarios',
-            'Dónde',
-            'Cómo llegar',
-            'Alojamientos',
+            'INICIO',
+            'NOSOTROS',
+            'HORARIOS',
+            'DÓNDE',
+            'CÓMO LLEGAR',
+            'ALOJAMIENTOS',
           ].map((item) => (
             <div
               key={item}

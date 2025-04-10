@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
-import Anillo from '../../assets/images/ANILLO.webp';
+import Anillo from '../../assets/images/ANILLOv2.webp';
 import Alojamiento from '../../components/Alojamiento';
 import ChurchIcon from '../../components/iconos/ChurchIcon';
 import PeopleIcon from '../../components/iconos/PeopleIcon';
@@ -13,7 +13,7 @@ import PartyIcon from '../../components/iconos/PartyIcon';
 
 function Landing() {
   const navigate = useNavigate();
-  const [actualSection, setActualSection] = useState('Inicio');
+  const [actualSection, setActualSection] = useState('INICIO');
   const inicio = useRef<HTMLDivElement>(null);
   const nosotros = useRef<HTMLDivElement>(null);
   const horarios = useRef<HTMLDivElement>(null);
@@ -31,12 +31,12 @@ function Landing() {
   const handleNavigateFromSection = (section: string) => {
     setActualSection(section);
     switch (section) {
-      case 'Inicio':
+      case 'INICIO':
         if (inicio.current) {
           inicio.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
         break;
-      case 'Nosotros':
+      case 'NOSOTROS':
         if (nosotros.current) {
           nosotros.current.scrollIntoView({
             behavior: 'smooth',
@@ -44,7 +44,7 @@ function Landing() {
           });
         }
         break;
-      case 'Horarios':
+      case 'HORARIOS':
         if (horarios.current) {
           horarios.current.scrollIntoView({
             behavior: 'smooth',
@@ -52,12 +52,12 @@ function Landing() {
           });
         }
         break;
-      case 'Dónde':
+      case 'DÓNDE':
         if (donde.current) {
           donde.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
         break;
-      case 'Cómo llegar':
+      case 'CÓMO LLEGAR':
         if (comoLlegar.current) {
           comoLlegar.current.scrollIntoView({
             behavior: 'smooth',
@@ -65,7 +65,7 @@ function Landing() {
           });
         }
         break;
-      case 'Alojamientos':
+      case 'ALOJAMIENTOS':
         if (alojamientos.current) {
           alojamientos.current.scrollIntoView({
             behavior: 'smooth',
@@ -93,8 +93,8 @@ function Landing() {
         className="bg-[#499495] text-[#d8d5be] flex place-content-center py-[1rem] md:py-[2.5rem]"
         ref={inicio}
       >
-        <div className="m-h-[10dvh] max-w-[900px] p-2">
-          <img src={Anillo} />
+        <div className="max-h-[90dvh] max-w-[900px] p-2">
+          <img src={Anillo} className="max-h-[90dvh] w-auto" />
         </div>
       </div>
       <div
