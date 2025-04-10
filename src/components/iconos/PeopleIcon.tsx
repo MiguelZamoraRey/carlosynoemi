@@ -36,14 +36,14 @@ function PeopleIcon({
         stroke={color}
         strokeWidth="1.5"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       ></path>
       <path
         d="M18 9C19.6569 9 21 7.65685 21 6C21 4.34315 19.6569 3 18 3C16.3431 3 15 4.34315 15 6C15 7.65685 16.3431 9 18 9Z"
         stroke={color}
         strokeWidth="1.5"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       ></path>
     </svg>
   );

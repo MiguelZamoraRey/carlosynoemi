@@ -270,15 +270,17 @@ function GuestSurvey() {
   }, []);
 
   return (
-    <div className="min-h-[100vh] min-w-[100vw] sm:min-w-[900px] max-w-[900px]  flex flex-col items-center justify-center align-middle z-12">
-      <motion.div
-        className={`w-[80%] flex flex-col gap-3`}
-        initial={isQuestionHide ? { opacity: 1 } : { opacity: 0 }}
-        animate={isQuestionHide ? { opacity: 0 } : { opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        {getActualQuestionComponent()}
-      </motion.div>
+    <div className="flex place-content-center">
+      <div className="min-h-[100vh] min-w-[100vw] sm:min-w-[900px] max-w-[900px]  flex flex-col items-center justify-center align-middle z-12">
+        <motion.div
+          className={`w-[80%] flex flex-col gap-3`}
+          initial={isQuestionHide ? { opacity: 1 } : { opacity: 0 }}
+          animate={isQuestionHide ? { opacity: 0 } : { opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          {getActualQuestionComponent()}
+        </motion.div>
+      </div>
     </div>
   );
 }

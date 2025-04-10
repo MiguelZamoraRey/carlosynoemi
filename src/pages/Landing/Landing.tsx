@@ -11,8 +11,6 @@ import CupIcon from '../../components/iconos/CupIcon';
 import SleepIcon from '../../components/iconos/SleepIcon';
 import PartyIcon from '../../components/iconos/PartyIcon';
 
-import './landing.css';
-
 function Landing() {
   const navigate = useNavigate();
   const [actualSection, setActualSection] = useState('Inicio');

@@ -19,6 +19,11 @@ const SurveyQuestion: React.FC<SurveyQuestionProps> = ({
   onCompleteFunction,
 }) => {
   const [response, setResponse] = useState(null);
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      onCompleteFunction(response);
+    }
+  };
   return (
     <div className="w-full flex flex-col justify-center align-middle gap-5">
       <div className="w-full flex align-middle bg-transparent rounded-lg text-[#d8d5be] text-2xl">
@@ -31,6 +36,7 @@ const SurveyQuestion: React.FC<SurveyQuestionProps> = ({
               type="text"
               className="bg-[#d8d5be] rounded-lg text-black p-6 w-[100%] text-2xl border-none focus:outline-none"
               onChange={(e) => setResponse(e.target.value)}
+              onKeyDown={handleKeyPress}
             />
             <button
               className=" border border-[#d8d5be] rounded-lg w-[100%] duration-300 ease-in-out   hover:bg-[#d8d5be] hover:text-[#397374] p-4 text-2xl"
