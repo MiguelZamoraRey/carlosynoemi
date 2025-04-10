@@ -23,20 +23,20 @@ function Alojamiento({
       <h2 className="text-2xl">{name}</h2>
       <div className="flex flex-row w-full justify-start items-center gap-2">
         <div className="bg-[#397374] rounded-full p-2">
-          <PlaceIcon color="#d8d5be" />{' '}
+          <PlaceIcon color="#fffff0" />{' '}
         </div>{' '}
         <span>{direction}</span>
       </div>
       <div className="flex flex-row w-full justify-start items-center gap-2">
         <div className="bg-[#397374] rounded-full p-2">
-          <PhoneIcon color="#d8d5be" />
+          <PhoneIcon color="#fffff0" />
         </div>{' '}
         <span>{phone}</span>
       </div>
       <div className="flex flex-row w-full justify-start items-center gap-2">
         <div className="bg-[#397374] rounded-full p-2">
           {' '}
-          <WebIcon color="#d8d5be" />
+          <WebIcon color="#fffff0" />
         </div>{' '}
         <span>
           Mira la web desde{' '}
@@ -48,7 +48,7 @@ function Alojamiento({
       <div className="flex flex-row w-full justify-start items-center gap-2">
         <div className="bg-[#397374] rounded-full p-2">
           {' '}
-          <CommentIcon color="#d8d5be" />
+          <CommentIcon color="#fffff0" />
         </div>{' '}
         <span className="text-sm">{description}</span>
       </div>
