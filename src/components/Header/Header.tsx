@@ -9,7 +9,7 @@ export default function Header({ section, handleOnClickSection }) {
   };
 
   return (
-    <div className="sticky top-0 z-50 bg-[#499495]">
+    <div className="sticky top-0 z-50 bg-[#499495] font-wix-bold">
       <div className="flex flex-row justify-center items-center w-full text-[#000000] p-4">
         <div className="md:hidden flex items-center ml-auto">
           <button

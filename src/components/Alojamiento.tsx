@@ -25,7 +25,7 @@ function Alojamiento({
         <div className="bg-[#397374] rounded-full p-2">
           <PlaceIcon color="#fffff0" />{' '}
         </div>{' '}
-        <span>{direction}</span>
+        <span className="text-start">{direction}</span>
       </div>
       <div className="flex flex-row w-full justify-start items-center gap-2">
         <div className="bg-[#397374] rounded-full p-2">
@@ -50,7 +50,7 @@ function Alojamiento({
           {' '}
           <CommentIcon color="#fffff0" />
         </div>{' '}
-        <span className="text-sm">{description}</span>
+        <span className="text-sm text-start">{description}</span>
       </div>
     </div>
   );

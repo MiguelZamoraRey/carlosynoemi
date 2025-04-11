@@ -82,7 +82,7 @@ function Landing() {
   };
 
   return (
-    <div className="m-h-[100dvh] flex flex-col m-w-full fontNoto scroll-smooth">
+    <div className="m-h-[100dvh] flex flex-col m-w-full fontNoto scroll-smooth font-wix">
       <Header
         section={actualSection}
         handleOnClickSection={(section) => {
@@ -102,7 +102,9 @@ function Landing() {
         ref={nosotros}
       >
         <div className="m-h-[10dvh] max-w-[900px] p-4 flex flex-col gap-6">
-          <h1 className="text-3xl font-extrabold">Sobre nosotros</h1>
+          <h1 className="text-3xl font-extrabold  font-wix-bold">
+            Sobre nosotros
+          </h1>
           <p>¡Que si! ¡Que nos casamos!</p>
           <p>
             Y si has llegado a esta página es porque eres una persona muy
@@ -125,7 +127,7 @@ function Landing() {
         ref={horarios}
       >
         <div className="max-w-[900px] p-4 flex flex-col gap-6">
-          <h1 className="text-3xl font-extrabold">Horario</h1>
+          <h1 className="text-3xl font-extrabold  font-wix-bold">Horario</h1>
           <div className="absolute h-[18em] w-1 bg-[#fffff0] ml-[1.1em] mt-[5em] z-[1]"></div>
           <div className="flex flex-col gap-4 justify-start align-middle ">
             <div className="flex flex-row justify-start align-middle gap-4">
@@ -178,7 +180,7 @@ function Landing() {
         ref={donde}
       >
         <div className="m-h-[10dvh] max-w-[900px] p-4 flex flex-col gap-6">
-          <h1 className="text-3xl font-extrabold">La finca</h1>
+          <h1 className="text-3xl font-extrabold  font-wix-bold">La finca</h1>
           <p>
             Toda la celebración va a tener lugar en la finca Prados Riveros, en
             Rascafría. Es un espacio muy especial que nos enamoró desde el
@@ -207,7 +209,9 @@ function Landing() {
         ref={comoLlegar}
       >
         <div className="m-h-[10dvh] max-w-[900px]  p-4 flex flex-col gap-6">
-          <h1 className="text-3xl font-extrabold">Cómo llegar</h1>
+          <h1 className="text-3xl font-extrabold  font-wix-bold">
+            Cómo llegar
+          </h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -233,7 +237,9 @@ function Landing() {
         ref={alojamientos}
       >
         <div className=" m-h-[10dvh] max-w-[900px]  p-4 flex flex-col gap-6">
-          <h1 className="text-3xl font-extrabold">Alojamientos </h1>
+          <h1 className="text-3xl font-extrabold  font-wix-bold">
+            Alojamientos{' '}
+          </h1>
           <p>
             En el caso de que prefieras pasar la noche en Rascafría aquí tenéis
             algunas recomendaciones de alojamientos. Llamad de parte de Jorge
