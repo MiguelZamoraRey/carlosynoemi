@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Anillo from '../../assets/images/ANILLOv2.webp';
+import Mapa from '../../assets/images/mapa_prados.webp';
 import Alojamiento from '../../components/Alojamiento';
 import ChurchIcon from '../../components/iconos/ChurchIcon';
 import PeopleIcon from '../../components/iconos/PeopleIcon';
@@ -10,10 +11,12 @@ import FoodIcon from '../../components/iconos/FoodIcon';
 import CupIcon from '../../components/iconos/CupIcon';
 import SleepIcon from '../../components/iconos/SleepIcon';
 import PartyIcon from '../../components/iconos/PartyIcon';
+import GMap from '../../components/GMap';
 
 function Landing() {
   const navigate = useNavigate();
   const [actualSection, setActualSection] = useState('INICIO');
+  const [isMobile, setIsMobile] = useState(false);
   const inicio = useRef<HTMLDivElement>(null);
   const nosotros = useRef<HTMLDivElement>(null);
   const horarios = useRef<HTMLDivElement>(null);
@@ -26,6 +29,17 @@ function Landing() {
     if (!guestId) {
       navigate('/');
     }
+  }, []);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 900); // Puedes ajustar este valor según tus necesidades
+    };
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
   }, []);
 
   const handleNavigateFromSection = (section: string) => {
@@ -208,28 +222,16 @@ function Landing() {
         className="bg-[#499495] text-[#000000] flex place-content-center py-[1rem] md:py-[2.5rem]"
         ref={comoLlegar}
       >
-        <div className="m-h-[10dvh] max-w-[900px]  p-4 flex flex-col gap-6">
+        <div className="m-h-[10dvh] max-w-[900px] p-4 flex flex-col gap-6">
           <h1 className="text-3xl font-extrabold  font-wix-bold">
             Cómo llegar
           </h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+          <GMap isMobile={isMobile} />
+          <img
+            src={Mapa}
+            alt="mapa direccion finca"
+            className="w-[100%] max-w-[900px] h-auto"
+          />
         </div>
       </div>
       <div
