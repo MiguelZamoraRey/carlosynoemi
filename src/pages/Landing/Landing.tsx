@@ -269,21 +269,21 @@ function Landing() {
               web={'http://www.caserontrastamara.es'}
             />
             <Alojamiento
-              name="El rincón de Rascafría "
+              name="El rincón de Rascafría"
               direction="Plaza del Dos de Mayo, 4, 28740 Rascafría"
               phone="682802528 / 918692490"
               description="Hotel rural,llamar de parte de jorge de orador Riveros"
               web={'http://www.hotelelrinconderascafria.com'}
             />
             <Alojamiento
-              name="Hotel los Manzanos"
+              name="Hotel Los Manzanos"
               direction="Av. del Valle, 50, 28740 Rascafría, Madri"
               phone="620233266"
               description="Preguntar por Maribe"
               web={'http://www.caserontrastamara.es'}
             />
             <Alojamiento
-              name="Hotel rural el Valle"
+              name="Hotel rural El Valle"
               direction="Av. del Valle, 39, 28740 Rascafría"
               phone="918691213"
               description="Acogedor alojamiento de montaña en Rascafría, que ofrece un trato familiar y un ambiente agradable"
@@ -311,28 +311,28 @@ function Landing() {
               web={'https://www.alojamientoslaabuela.com/'}
             />
             <Alojamiento
-              name="La casa del farmacéutico"
+              name="La Casa del Farmacéutico"
               direction="C. Grande, 16, 28749 Alameda del Valle"
               phone="670750660"
               description="Casa grande de alquiler íntegro"
               web={'https://www.casaruraldelfarmaceutico.es'}
             />
             <Alojamiento
-              name="Casa antigua del valle"
+              name="Casa Antigua del Valle"
               direction="Tr.ª del Alamillo, 5, 28749 Alameda del Valle"
               phone="649588981"
               description="Preguntar por Fabiola"
               web={'http://www.casasantiguasdelvalle.es'}
             />
             <Alojamiento
-              name="Casa rural el bosque"
+              name="Casa rural El Bosque"
               direction="C. Grande, 3, 28749 Alameda del Valle, Madrid"
               phone="636593914"
               description="Preguntar por Maricarmen"
               web={'http://www.casaruralelbosque.es/'}
             />
             <Alojamiento
-              name="El pajar de alameda"
+              name="El Pajar de Alameda"
               direction="Tr.ª de la Cochera, 11, 28749 Alameda del Valle"
               phone="680217886"
               description="El Pajar de Alameda es una casa rural para alquiler completo en la sierra norte de Madrid"

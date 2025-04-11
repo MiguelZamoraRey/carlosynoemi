@@ -55,7 +55,7 @@ function GuestSurvey() {
         return (
           <SurveyQuestion
             key={1}
-            questionText="¡Genial! Necesito que me digas tu nombre y apellidos."
+            questionText="¡Hola! ¿Cómo te llamas? (Introduce tu nombre y apellidos)"
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
