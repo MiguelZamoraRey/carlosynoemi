@@ -225,7 +225,7 @@ function Landing() {
           <p>
             Como la fecha es a finales de septiembre por la tarde es probable
             que a partir de cierta hora caiga bastante la temperatura. ¡Qué no
-            cunda el pánico! Vamos a estar super agusto, pero como diría tu
+            cunda el pánico! Vamos a estar súper agusto, pero como diría tu
             madre:
           </p>
           <div className="flex flex-row justify-center align-middle items-center py-[1rem] md:py-[2.5rem]">

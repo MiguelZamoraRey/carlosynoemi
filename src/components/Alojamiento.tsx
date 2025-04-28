@@ -38,12 +38,16 @@ function Alojamiento({
           {' '}
           <WebIcon color="#fffff0" />
         </div>{' '}
-        <span>
-          Mira la web desde{' '}
-          <a href={web} className="underline" target="_blank">
-            aqui
-          </a>
-        </span>
+        {web == '' ? (
+          <span>Este alojamiento no tiene web disponible</span>
+        ) : (
+          <span>
+            Mira la web desde{' '}
+            <a href={web} className="underline" target="_blank">
+              aqui
+            </a>
+          </span>
+        )}
       </div>
       <div className="flex flex-row w-full justify-start items-center gap-2">
         <div className="bg-[#397374] rounded-full p-2">
