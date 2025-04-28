@@ -33,14 +33,14 @@ export default function Header({ section, handleOnClickSection }) {
             </svg>
           </button>
         </div>
-        <div className="hidden md:flex flex-row justify-center align-middle gap-6">
+        <div className="hidden md:flex flex-row justify-center align-middle gap-8">
           {[
-            'INICIO',
-            'NOSOTROS',
-            'HORARIOS',
-            'DÓNDE',
-            'CÓMO LLEGAR',
-            'ALOJAMIENTOS',
+            'Inicio',
+            'La boda',
+            'Horarios',
+            'Dónde',
+            'Cómo llegar',
+            'Alojamientos',
           ].map((item) => (
             <div
               key={item}
@@ -48,8 +48,8 @@ export default function Header({ section, handleOnClickSection }) {
               onClick={() => handleOnClickSection(item)}
             >
               <span
-                className={`font-bold cursor-pointer hover:scale-110 ${
-                  section === item ? 'underline' : ''
+                className={` cursor-pointer hover:scale-110 ${
+                  section === item ? 'text-white' : ''
                 }`}
               >
                 {item}
@@ -67,12 +67,12 @@ export default function Header({ section, handleOnClickSection }) {
           transition={{ duration: 0.3 }}
         >
           {[
-            'INICIO',
-            'NOSOTROS',
-            'HORARIOS',
-            'DÓNDE',
-            'CÓMO LLEGAR',
-            'ALOJAMIENTOS',
+            'Inicio',
+            'La boda',
+            'Horarios',
+            'Dónde',
+            'Cómo llegar',
+            'Alojamientos',
           ].map((item) => (
             <div
               key={item}
@@ -83,8 +83,8 @@ export default function Header({ section, handleOnClickSection }) {
               }}
             >
               <span
-                className={`font-bold cursor-pointer hover:scale-110 ${
-                  section === item ? 'underline' : ''
+                className={`cursor-pointer hover:scale-110 ${
+                  section === item ? 'text-white' : ''
                 }`}
               >
                 {item}

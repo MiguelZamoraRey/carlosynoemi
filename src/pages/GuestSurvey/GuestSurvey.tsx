@@ -89,7 +89,7 @@ function GuestSurvey() {
         return (
           <SurveyQuestion
             key={3}
-            questionText="¡Que bien!, ¿Tienes alguna intolerancia o alergia?"
+            questionText="¡Vale!, ¿Tienes alguna intolerancia o alergia?"
             type={QUESTION_TYPE.OPTION}
             options={['Sí', 'No']}
             onCompleteFunction={(response) => {
@@ -107,7 +107,7 @@ function GuestSurvey() {
         return (
           <SurveyQuestion
             key={4}
-            questionText="¡Vale!, Cuéntanos qué necesidades tienes para avisar al catering"
+            questionText="Cuéntanos qué necesidades tienes para avisar al catering"
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {

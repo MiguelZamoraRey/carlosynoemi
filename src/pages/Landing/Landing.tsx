@@ -6,12 +6,16 @@ import Anillo from '../../assets/images/ANILLOv2.webp';
 import Mapa from '../../assets/images/mapa_prados.webp';
 import Alojamiento from '../../components/Alojamiento';
 import ChurchIcon from '../../components/iconos/ChurchIcon';
-import PeopleIcon from '../../components/iconos/PeopleIcon';
 import FoodIcon from '../../components/iconos/FoodIcon';
 import CupIcon from '../../components/iconos/CupIcon';
 import SleepIcon from '../../components/iconos/SleepIcon';
-import PartyIcon from '../../components/iconos/PartyIcon';
 import GMap from '../../components/GMap';
+
+import RunaImg1 from '../../assets/images/runas/1.webp';
+import RunaImg2 from '../../assets/images/runas/2.webp';
+import RunaImg3 from '../../assets/images/runas/3.webp';
+import RunaImg4 from '../../assets/images/runas/4.webp';
+import RunaImg5 from '../../assets/images/runas/5.webp';
 
 function Landing() {
   const navigate = useNavigate();
@@ -45,12 +49,12 @@ function Landing() {
   const handleNavigateFromSection = (section: string) => {
     setActualSection(section);
     switch (section) {
-      case 'INICIO':
+      case 'Inicio':
         if (inicio.current) {
           inicio.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
         break;
-      case 'NOSOTROS':
+      case 'La boda':
         if (nosotros.current) {
           nosotros.current.scrollIntoView({
             behavior: 'smooth',
@@ -58,7 +62,7 @@ function Landing() {
           });
         }
         break;
-      case 'HORARIOS':
+      case 'Horarios':
         if (horarios.current) {
           horarios.current.scrollIntoView({
             behavior: 'smooth',
@@ -66,12 +70,12 @@ function Landing() {
           });
         }
         break;
-      case 'DÓNDE':
+      case 'Dónde':
         if (donde.current) {
           donde.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
         break;
-      case 'CÓMO LLEGAR':
+      case 'Cómo llegar':
         if (comoLlegar.current) {
           comoLlegar.current.scrollIntoView({
             behavior: 'smooth',
@@ -79,7 +83,7 @@ function Landing() {
           });
         }
         break;
-      case 'ALOJAMIENTOS':
+      case 'Alojamientos':
         if (alojamientos.current) {
           alojamientos.current.scrollIntoView({
             behavior: 'smooth',
@@ -108,7 +112,7 @@ function Landing() {
         ref={inicio}
       >
         <div className="max-h-[90dvh] max-w-[900px] p-2">
-          <img src={Anillo} className="max-h-[90dvh] w-auto" />
+          <img src={Anillo} className="max-h-[80dvh] w-auto" />
         </div>
       </div>
       <div
@@ -116,9 +120,10 @@ function Landing() {
         ref={nosotros}
       >
         <div className="m-h-[10dvh] max-w-[900px] p-4 flex flex-col gap-6">
-          <h1 className="text-3xl font-extrabold  font-wix-bold">
-            Sobre nosotros
-          </h1>
+          <div className="max-h-12dvh flex flex-col justify-center align-middle items-center">
+            <img src={RunaImg1} alt="runa A" className="h-full w-auto" />
+          </div>
+          <h1 className="text-3xl font-extrabold  font-wix-bold">La boda</h1>
           <p>¡Que si! ¡Que nos casamos!</p>
           <p>
             Y si has llegado a esta página es porque eres una persona muy
@@ -141,40 +146,29 @@ function Landing() {
         ref={horarios}
       >
         <div className="max-w-[900px] p-4 flex flex-col gap-6">
+          <div className="max-h-12dvh flex flex-col justify-center align-middle items-center">
+            <img src={RunaImg2} alt="runa B" className="h-full w-auto" />
+          </div>
           <h1 className="text-3xl font-extrabold  font-wix-bold">Horario</h1>
           <div className="absolute h-[18em] w-1 bg-[#fffff0] ml-[1.1em] mt-[5em] z-[1]"></div>
           <div className="flex flex-col gap-4 justify-start align-middle ">
             <div className="flex flex-row justify-start align-middle gap-4">
               <div className="bg-[#fffff0] rounded-full p-2 z-10">
-                <PeopleIcon color="#397374" />{' '}
-              </div>{' '}
-              <span className="text-xl mt-1">16:30</span>
-              <span className="font-bold text-xl mt-1">Llegada invitados</span>
-            </div>
-            <div className="flex flex-row justify-start align-middle gap-4">
-              <div className="bg-[#fffff0] rounded-full p-2 z-10">
                 <ChurchIcon color="#397374" />{' '}
               </div>{' '}
-              <span className="text-xl mt-1">17:00</span>
+              <span className="text-xl mt-1">16:30</span>
               <span className="font-bold text-xl mt-1">Ceremonia</span>
-            </div>
-            <div className="flex flex-row justify-start align-middle gap-4">
-              <div className="bg-[#fffff0] rounded-full p-2 z-10">
-                <CupIcon color="#397374" />{' '}
-              </div>{' '}
-              <span className="text-xl mt-1">18:00</span>
-              <span className="font-bold text-xl mt-1">Cóctel</span>
             </div>
             <div className="flex flex-row justify-start align-middle gap-4">
               <div className="bg-[#fffff0] rounded-full p-2 z-10">
                 <FoodIcon color="#397374" />{' '}
               </div>{' '}
-              <span className="text-xl mt-1">20:00</span>
-              <span className="font-bold text-xl mt-1">Banquete</span>
+              <span className="text-xl mt-1">18:00</span>
+              <span className="font-bold text-xl mt-1">Cóctel</span>
             </div>
             <div className="flex flex-row justify-start align-center gap-4">
               <div className="bg-[#fffff0] rounded-full p-2 z-10">
-                <PartyIcon color="#397374" />{' '}
+                <CupIcon color="#397374" />{' '}
               </div>{' '}
               <span className="text-xl mt-1">22:00</span>
               <span className="font-bold text-xl mt-1">Comienza la fiesta</span>
@@ -194,6 +188,9 @@ function Landing() {
         ref={donde}
       >
         <div className="m-h-[10dvh] max-w-[900px] p-4 flex flex-col gap-6">
+          <div className="max-h-12dvh flex flex-col justify-center align-middle items-center">
+            <img src={RunaImg3} alt="runa C" className="h-full w-auto" />
+          </div>
           <h1 className="text-3xl font-extrabold  font-wix-bold">La finca</h1>
           <p>
             Toda la celebración va a tener lugar en la finca Prados Riveros, en
@@ -223,9 +220,15 @@ function Landing() {
         ref={comoLlegar}
       >
         <div className="m-h-[10dvh] max-w-[900px] p-4 flex flex-col gap-6">
+          <div className="max-h-12dvh flex flex-col justify-center align-middle items-center">
+            <img src={RunaImg4} alt="runa D" className="h-full w-auto" />
+          </div>
           <h1 className="text-3xl font-extrabold  font-wix-bold">
             Cómo llegar
           </h1>
+
+          <p>Camino del Palero, 11, 28740 Rascafría, Madrid</p>
+
           <GMap isMobile={isMobile} />
           <img
             src={Mapa}
@@ -239,13 +242,16 @@ function Landing() {
         ref={alojamientos}
       >
         <div className=" m-h-[10dvh] max-w-[900px]  p-4 flex flex-col gap-6">
+          <div className="max-h-12dvh flex flex-col justify-center align-middle items-center">
+            <img src={RunaImg5} alt="runa E" className="h-full w-auto" />
+          </div>
           <h1 className="text-3xl font-extrabold  font-wix-bold">
             Alojamientos{' '}
           </h1>
           <p>
             En el caso de que prefieras pasar la noche en Rascafría aquí tenéis
             algunas recomendaciones de alojamientos. Llamad de parte de Jorge
-            Pascual de Prados Riverosos tratarán muy bien.
+            Pascual de Prados Riveros os tratarán muy bien.
           </p>
           <div className="grid grid-flow-row grid-cols-1 md:grid-cols-2">
             <Alojamiento
@@ -270,14 +276,14 @@ function Landing() {
               web={'http://www.casagranero.com/'}
             />
             <Alojamiento
-              name="Caserón de Trastamara"
-              direction="Pl. de Trastamara, 11, 28740 Rascafría"
+              name="Caserón de Trastámara"
+              direction="Pl. de Trastámara, 11, 28740 Rascafría"
               phone="620233266"
               description="Preguntar por Maribel"
               web={'http://www.caserontrastamara.es'}
             />
             <Alojamiento
-              name="El rincón de Rascafría"
+              name="El Rincón de Rascafría"
               direction="Plaza del Dos de Mayo, 4, 28740 Rascafría"
               phone="682802528 / 918692490"
               description="Hotel rural,llamar de parte de jorge de orador Riveros"
