@@ -10,12 +10,27 @@ import FoodIcon from '../../components/iconos/FoodIcon';
 import CupIcon from '../../components/iconos/CupIcon';
 import SleepIcon from '../../components/iconos/SleepIcon';
 import GMap from '../../components/GMap';
+import Gallery from '../../components/Gallery/Gallery';
 
 import RunaImg1 from '../../assets/images/runas/1.webp';
 import RunaImg2 from '../../assets/images/runas/2.webp';
 import RunaImg3 from '../../assets/images/runas/3.webp';
 import RunaImg4 from '../../assets/images/runas/4.webp';
 import RunaImg5 from '../../assets/images/runas/5.webp';
+
+import NosotrosImg1 from '../../assets/images/nosotros/1.webp';
+import NosotrosImg2 from '../../assets/images/nosotros/2.webp';
+import NosotrosImg3 from '../../assets/images/nosotros/3.webp';
+import NosotrosImg4 from '../../assets/images/nosotros/4.webp';
+import NosotrosImg5 from '../../assets/images/nosotros/5.webp';
+import NosotrosImg6 from '../../assets/images/nosotros/6.webp';
+
+import FincaImg1 from '../../assets/images/finca/1.webp';
+import FincaImg2 from '../../assets/images/finca/2.webp';
+import FincaImg3 from '../../assets/images/finca/3.webp';
+import FincaImg4 from '../../assets/images/finca/4.webp';
+import FincaImg5 from '../../assets/images/finca/5.webp';
+import FincaImg6 from '../../assets/images/finca/6.webp';
 
 function Landing() {
   const navigate = useNavigate();
@@ -141,6 +156,16 @@ function Landing() {
           </p>
         </div>
       </div>
+      <Gallery
+        imgs={[
+          NosotrosImg1,
+          NosotrosImg2,
+          NosotrosImg3,
+          NosotrosImg4,
+          NosotrosImg5,
+          NosotrosImg6,
+        ]}
+      />
       <div
         className="bg-[#499495] text-[#000000] m-h-[10dvh] flex place-content-center py-[1rem] md:py-[2.5rem]"
         ref={horarios}
@@ -150,7 +175,7 @@ function Landing() {
             <img src={RunaImg2} alt="runa B" className="h-full w-auto" />
           </div>
           <h1 className="text-3xl font-extrabold  font-wix-bold">Horario</h1>
-          <div className="absolute h-[18em] w-1 bg-[#fffff0] ml-[1.1em] mt-[5em] z-[1]"></div>
+          <div className="absolute h-[10em] w-1 bg-[#fffff0] ml-[1.1em] mt-[11em] z-[1]"></div>
           <div className="flex flex-col gap-4 justify-start align-middle ">
             <div className="flex flex-row justify-start align-middle gap-4">
               <div className="bg-[#fffff0] rounded-full p-2 z-10">
@@ -215,6 +240,16 @@ function Landing() {
           </p>
         </div>
       </div>
+      <Gallery
+        imgs={[
+          FincaImg1,
+          FincaImg2,
+          FincaImg3,
+          FincaImg4,
+          FincaImg5,
+          FincaImg6,
+        ]}
+      />
       <div
         className="bg-[#499495] text-[#000000] flex place-content-center py-[1rem] md:py-[2.5rem]"
         ref={comoLlegar}
