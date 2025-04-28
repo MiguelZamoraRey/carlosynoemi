@@ -232,9 +232,9 @@ function GuestSurvey() {
             key={11}
             questionText="¿Vas a querer venir en autobús? Cuando nos confirméis quienes están interesados publicaremos toda la información en la página web"
             type={QUESTION_TYPE.OPTION}
-            options={['Si, ida y vuelta', 'No, voy por mi cuenta']}
+            options={['Sí, ida y vuelta', 'No, voy por mi cuenta']}
             onCompleteFunction={(response) => {
-              if (response == 'Sí') {
+              if (response == 'Sí, ida y vuelta') {
                 updateGuest({ interestedInTransport: true }, 12);
               } else {
                 updateGuest({ interestedInTransport: false }, 12);
