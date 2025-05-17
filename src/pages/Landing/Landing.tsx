@@ -5,7 +5,6 @@ import Header from '../../components/Header/Header';
 import Anillo from '../../assets/images/ANILLOv2.webp';
 import Mapa from '../../assets/images/mapa_prados.webp';
 import Alojamiento from '../../components/Alojamiento';
-import ChurchIcon from '../../components/iconos/ChurchIcon';
 import FoodIcon from '../../components/iconos/FoodIcon';
 import CupIcon from '../../components/iconos/CupIcon';
 import SleepIcon from '../../components/iconos/SleepIcon';
@@ -31,6 +30,7 @@ import FincaImg3 from '../../assets/images/finca/3.webp';
 import FincaImg4 from '../../assets/images/finca/4.webp';
 import FincaImg5 from '../../assets/images/finca/5.webp';
 import FincaImg6 from '../../assets/images/finca/6.webp';
+import PeopleIcon from '../../components/iconos/PeopleIcon';
 
 function Landing() {
   const navigate = useNavigate();
@@ -179,7 +179,7 @@ function Landing() {
           <div className="flex flex-col gap-4 justify-start align-middle ">
             <div className="flex flex-row justify-start align-middle gap-4">
               <div className="bg-[#fffff0] rounded-full p-2 z-10">
-                <ChurchIcon color="#397374" />{' '}
+                <PeopleIcon color="#397374" />{' '}
               </div>{' '}
               <span className="text-xl mt-1">16:30</span>
               <span className="font-bold text-xl mt-1">Ceremonia</span>
@@ -268,7 +268,7 @@ function Landing() {
           <img
             src={Mapa}
             alt="mapa direccion finca"
-            className="w-[100%] max-w-[900px] h-auto"
+            className="w-[100%] max-w-[700px] h-auto"
           />
         </div>
       </div>

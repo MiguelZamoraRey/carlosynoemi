@@ -127,10 +127,7 @@ function GuestSurvey() {
               if (response == 'Sí') {
                 updateGuest({ hasCompanion: true }, 6);
               } else {
-                updateGuest(
-                  { hasCompanion: false, status: GUEST_STATUS.COMPLETE },
-                  9
-                );
+                updateGuest({ hasCompanion: false }, 9);
               }
             }}
           />
@@ -163,7 +160,6 @@ function GuestSurvey() {
                 updateGuest(
                   {
                     companionHasIntolerances: false,
-                    status: GUEST_STATUS.COMPLETE,
                   },
                   9
                 );
@@ -183,7 +179,6 @@ function GuestSurvey() {
               updateGuest(
                 {
                   companionIntolerances: response,
-                  status: GUEST_STATUS.COMPLETE,
                 },
                 9
               );
@@ -251,7 +246,10 @@ function GuestSurvey() {
             type={QUESTION_TYPE.FREE_TEXT}
             options={null}
             onCompleteFunction={(response) => {
-              updateGuest({ favoriteSong: response }, 15);
+              updateGuest(
+                { favoriteSong: response, status: GUEST_STATUS.COMPLETE },
+                15
+              );
             }}
           />
         );
